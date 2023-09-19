@@ -10,8 +10,8 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
   prometheus-exporter:
     image: prom/node-exporter
-    container_name: service
-    hostname: service
+    container_name: node-exporter
+    hostname: exporter
     ports:
       - 9100:9100
   grafana:
@@ -20,6 +20,5 @@ services:
     hostname: grafana
     ports:
       - 3000:3000
-    volumes:  
+    volumes:
       - ./grafana.ini:/etc/grafana/grafana.ini
-

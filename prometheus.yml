@@ -4,5 +4,5 @@ global:
 scrape_configs:
 - job_name: node
   static_configs:
-  - targets: ['service:9100'] # NOT localhost since we named the host of service in docker-compose file
+  - targets: ['node-exporter:9100'] # NOT localhost since we named the host of service in docker-compose file
 
