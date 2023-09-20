@@ -4,4 +4,4 @@ global:
 scrape_configs:
 - job_name: node
   static_configs:
-  - targets: ['node-exporter:9100'] #改为你自己的ip
+  - targets: ['ip:9100'] # 改为你监控端的ip
