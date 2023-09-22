@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3'
 services:
   prometheus:
     image: prom/prometheus
@@ -6,8 +6,14 @@ services:
     hostname: prometheus
     ports:
       - 9090:9090
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--web.enable-lifecycle"
     volumes:
+      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+      - prometheus_data:/prometheus
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./rules:/etc/prometheus/rules
 
   grafana:
     image: grafana/grafana
@@ -16,4 +22,21 @@ services:
     ports:
       - 3000:3000
     volumes:
+      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+      - grafana_data:/var/lib/grafana
       - ./grafana.ini:/etc/grafana/grafana.ini
+
+  alertmanager:
+    image: prom/alertmanager
+    container_name: alertmanager
+    ports:
+      - 9093:9093
+    volumes:
+      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+      - alertmanager_data:/alertmanager
+      - ./alertmanager:/etc/alertmanager
+
+volumes:
+  alertmanager_data:
+  grafana_data:
+  prometheus_data:

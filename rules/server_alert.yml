@@ -1,0 +1,33 @@
+groups:
+  - name: 内存预警
+    rules:
+      - alert: HighMemoryUsage
+        expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "内存使用率超过90%报警"
+          description: "实例 {{ $labels.instance }} 内存使用率超过90%."
+
+  - name: 实例预警
+    rules:
+      - alert: InstanceAlive
+        expr: up == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "实例存活报警"
+          description: "实例 {{ $labels.instance }} 不再存活."
+
+  - name: CPU使用率预警
+    rules:
+      - alert: HighCPUUsage
+        expr: sum by (instance) (node_cpu_seconds_total) / ignoring(cpu) group_left sum by (instance) (node_cpu_seconds_total) * 100 > 70
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CPU使用率超过70%报警"
+          description: "实例 {{ $labels.instance }} CPU使用率超过70%."
