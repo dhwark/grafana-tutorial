@@ -2,15 +2,16 @@
 
 ## 目录
 
--   [OVERVIEW 概述](#OVERVIEW概述)
-    -   [What is Prometheus? 什么是普罗米修斯？](#What-is-Prometheus什么是普罗米修斯)
-    -   [组件架构图](#组件架构图)
--   [快速部署Prometheus & grafana实例](#快速部署Prometheus--grafana实例)
-    -   [docker-compose.yml](#docker-composeyml)
-    -   [node\_exporter.sh](#node_exportersh)
-    -   [prometheus.yml](#prometheusyml)
-    -   [grafana](#grafana)
-    -   [tips](#tips)
+- [快速搭建Prometheus监控](#快速搭建prometheus监控)
+  - [目录](#目录)
+    - [OVERVIEW 概述](#overview概述)
+      - [What is Prometheus? 什么是普罗米修斯？](#what-is-prometheus什么是普罗米修斯)
+      - [组件架构图](#组件架构图)
+    - [快速部署Prometheus \& grafana实例](#快速部署prometheus--grafana实例)
+      - [docker-compose.yml](#docker-composeyml)
+      - [node\_exporter.sh](#node_exportersh)
+      - [prometheus.yml](#prometheusyml)
+      - [grafana](#grafana)
 
 ### OVERVIEW 概述
 
@@ -74,37 +75,8 @@ services:
 
 `node_exporter` 使用9100端口
 
-此脚本是在宿主机上安装`node_exporter`采集数据，程序由go语言编写，无需编译直接运行，建议配置成systemd服务来管理，完整代码如下：
+此脚本是在宿主机上安装`node_exporter`采集数据，程序由go语言编写，无需编译直接运行，脚本中配置成systemd服务来管理。
 
-```bash
-#!/bin/bash
-
-
-set -e
-
-ip=$(ip a |grep ens32 | sed "2s/^.*inet//;2s/brd.*$//p" -n)
-
-tar -zxf node_exporter-1.5.0.linux-amd64.tar.gz
-mv node_exporter-1.5.0.linux-amd64 /usr/local/node_exporter
-touch /usr/lib/systemd/system/node_exporter.service
-cat > /usr/lib/systemd/system/node_exporter.service << "EOF"
-[Unit]
-Description=node_exporter
-[Service]
-ExecStart=/usr/local/node_exporter/node_exporter
-ExecReload=/bin/kill -HUP $MAINPID
-KillMode=process
-Restart=on-failure
-[Install]
-WantedBy=multi-user.target
-EOF
-
-systemctl daemon-reload
-systemctl enable node_exporter
-systemctl start node_exporter
-
-echo "now node_exporter is running on ${ip}:9100"
-```
 
 #### prometheus.yml
 
