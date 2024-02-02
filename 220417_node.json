@@ -1,59 +1,13 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_TEST-PROMETHEUS",
-      "label": "test-Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": [],
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "bargauge",
-      "name": "Bar gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "8.3.6"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph (old)",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
         "$$hashKey": "object:2875",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -73,8 +27,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 16098,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1650211874805,
+  "id": 1,
   "links": [
     {
       "$$hashKey": "object:2300",
@@ -112,7 +65,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_TEST-PROMETHEUS}"
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
       },
       "gridPos": {
         "h": 1,
@@ -122,10 +75,23 @@
       },
       "id": 187,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "资源总览（关联JOB项）当前选中主机：$show_hostname，实例：$instance",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "description": "分区使用率、磁盘读取、磁盘写入、下载带宽、上传带宽，如果有多个网卡或者多个分区，是采集的使用率最高的网卡或者分区的数值。\n\n连接数：CurrEstab - 当前状态为 ESTABLISHED 或 CLOSE-WAIT 的 TCP 连接数。",
       "fieldConfig": {
         "defaults": {
@@ -134,8 +100,11 @@
           },
           "custom": {
             "align": "center",
-            "displayMode": "auto",
-            "filterable": false
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "decimals": 1,
           "mappings": [],
@@ -177,8 +146,10 @@
                 }
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-text"
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
               }
             ]
           },
@@ -194,7 +165,7 @@
               },
               {
                 "id": "custom.width",
-                "value": 61
+                "value": 68
               },
               {
                 "id": "decimals"
@@ -212,8 +183,11 @@
                 "value": "binBps"
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               },
               {
                 "id": "thresholds",
@@ -237,7 +211,7 @@
               },
               {
                 "id": "custom.width",
-                "value": 79
+                "value": 98
               }
             ]
           },
@@ -252,8 +226,11 @@
                 "value": "binBps"
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               },
               {
                 "id": "thresholds",
@@ -277,7 +254,7 @@
               },
               {
                 "id": "custom.width",
-                "value": 81
+                "value": 102
               }
             ]
           },
@@ -292,8 +269,11 @@
                 "value": "binbps"
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               },
               {
                 "id": "thresholds",
@@ -317,7 +297,7 @@
               },
               {
                 "id": "custom.width",
-                "value": 81
+                "value": 95
               },
               {
                 "id": "decimals"
@@ -335,8 +315,11 @@
                 "value": "binbps"
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               },
               {
                 "id": "thresholds",
@@ -390,8 +373,11 @@
             },
             "properties": [
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               },
               {
                 "id": "thresholds",
@@ -415,7 +401,7 @@
               },
               {
                 "id": "custom.width",
-                "value": 54
+                "value": 59
               },
               {
                 "id": "decimals"
@@ -429,8 +415,11 @@
             },
             "properties": [
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               },
               {
                 "id": "thresholds",
@@ -454,7 +443,7 @@
               },
               {
                 "id": "custom.width",
-                "value": 63
+                "value": 51
               },
               {
                 "id": "decimals"
@@ -476,8 +465,10 @@
                 "value": 0
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-text"
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
               },
               {
                 "id": "color",
@@ -496,7 +487,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 115
+                "value": 179
               },
               {
                 "id": "custom.filterable",
@@ -515,7 +506,8 @@
                 "value": true
               },
               {
-                "id": "custom.width"
+                "id": "custom.width",
+                "value": 495
               }
             ]
           },
@@ -556,8 +548,11 @@
                 }
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-background"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "color-background"
+                }
               }
             ]
           },
@@ -572,8 +567,11 @@
                 "value": "percent"
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
               },
               {
                 "id": "color",
@@ -614,14 +612,16 @@
         ]
       },
       "gridPos": {
-        "h": 10,
+        "h": 4,
         "w": 24,
         "x": 0,
         "y": 1
       },
       "id": 198,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": [
             "Value #B",
             "Value #C",
@@ -646,12 +646,12 @@
           }
         ]
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
@@ -665,7 +665,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "sum(time() - node_boot_time_seconds{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})by(instance)/86400",
@@ -679,7 +679,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
@@ -693,7 +693,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "count(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode='system'}) by (instance)",
@@ -707,7 +707,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "node_load5{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}",
@@ -720,7 +720,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "(1 - avg(rate(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode=\"idle\"}[$interval])) by (instance)) * 100",
@@ -734,7 +734,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "(1 - (node_memory_MemAvailable_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} / (node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})))* 100",
@@ -748,7 +748,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "max((node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}-node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}) *100/(node_filesystem_avail_bytes {origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}+(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"}-node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"ext.?|xfs\"})))by(instance)",
@@ -762,7 +762,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "max(rate(node_disk_read_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])) by (instance)",
@@ -776,7 +776,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "max(rate(node_disk_written_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])) by (instance)",
@@ -790,7 +790,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "node_netstat_Tcp_CurrEstab{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
@@ -804,7 +804,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "node_sockstat_TCP_tw{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
@@ -818,7 +818,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "max(rate(node_network_receive_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])*8) by (instance)",
@@ -832,7 +832,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "max(rate(node_network_transmit_bytes_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])*8) by (instance)",
@@ -846,7 +846,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "((1-(1 - avg(irate(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode=\"idle\"}[$interval])) by (instance))^1.3)^(1/3)*0.5 + \r\n(1-(1 - avg(node_memory_MemAvailable_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} / node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})by (instance))^6)^(1/3)*0.3 + \r\n(1 - max(irate(node_disk_io_time_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval]))by (instance)^1.1)^(1/2)*0.2)*100",
@@ -860,7 +860,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "max(rate(node_disk_io_time_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[$interval])) by (instance) *100",
@@ -936,192 +936,6 @@
       "type": "table"
     },
     {
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "center",
-            "displayMode": "auto"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "/.*使用率/"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "percent"
-              },
-              {
-                "id": "decimals",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "IP"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 74
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "主机名"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 115
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "P99CPU使用率"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 67
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "P99内存使用率"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 86
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 0,
-        "y": 11
-      },
-      "id": 200,
-      "options": {
-        "footer": {
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "8.3.6",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
-          },
-          "exemplar": false,
-          "expr": "node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - 0",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "主机名",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
-          },
-          "exemplar": false,
-          "expr": "quantile_over_time(0.99, cpu:usage:rate1m{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",}[7d:1h])",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "CPU使用率P99",
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
-          },
-          "exemplar": false,
-          "expr": "quantile_over_time(0.99, mem:usage:rate1m{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}[7d:1h])",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "内存使用率P99",
-          "refId": "C"
-        }
-      ],
-      "title": "最近7天P99资源使用率",
-      "transformations": [
-        {
-          "id": "seriesToColumns",
-          "options": {
-            "byField": "instance"
-          }
-        },
-        {
-          "id": "filterFieldsByName",
-          "options": {
-            "include": {
-              "pattern": "/^Value #[^A]|^instance$|^nodename$/"
-            }
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {},
-            "renameByName": {
-              "Value #B": "P99CPU使用率",
-              "Value #C": "P99内存使用率",
-              "instance": "IP",
-              "nodename": "主机名"
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
       "aliasColors": {
         "192.168.200.241:9100_Total": "dark-red",
         "Idle - Waiting for something to happen": "#052B51",
@@ -1140,6 +954,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1151,9 +969,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
-        "x": 6,
-        "y": 11
+        "w": 9,
+        "x": 0,
+        "y": 5
       },
       "hiddenSeries": false,
       "id": 206,
@@ -1182,7 +1000,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1205,7 +1023,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "count(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode='system'})",
@@ -1221,7 +1039,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "sum(node_load5{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})",
@@ -1236,7 +1054,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "avg(1 - avg(rate(node_cpu_seconds_total{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",mode=\"idle\"}[$interval])) by (instance)) * 100",
@@ -1298,6 +1116,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1308,9 +1130,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
-        "x": 12,
-        "y": 11
+        "w": 8,
+        "x": 9,
+        "y": 5
       },
       "height": "300",
       "hiddenSeries": false,
@@ -1337,7 +1159,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1361,7 +1183,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})",
@@ -1377,7 +1199,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - node_memory_MemAvailable_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"})",
@@ -1392,7 +1214,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "(sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"} - node_memory_MemAvailable_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}) / sum(node_memory_MemTotal_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}))*100",
@@ -1445,6 +1267,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "decimals": 1,
       "description": "",
       "fieldConfig": {
@@ -1457,9 +1283,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
-        "x": 18,
-        "y": 11
+        "w": 7,
+        "x": 17,
+        "y": 5
       },
       "hiddenSeries": false,
       "id": 210,
@@ -1487,7 +1313,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1510,7 +1336,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))",
@@ -1524,7 +1350,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance)) - sum(avg(node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))",
@@ -1538,7 +1364,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "(sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance)) - sum(avg(node_filesystem_free_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))) *100/(sum(avg(node_filesystem_avail_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))+(sum(avg(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance)) - sum(avg(node_filesystem_free_bytes{vorigin_prometheus=~\"$origin_prometheus\",job=~\"$job\",fstype=~\"xfs|ext.*\"})by(device,instance))))",
@@ -1590,18 +1416,35 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 12
       },
       "id": 212,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "资源明细：【$show_hostname】【$instance】",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1645,11 +1488,13 @@
         "h": 6,
         "w": 3,
         "x": 0,
-        "y": 19
+        "y": 13
       },
       "id": 214,
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
@@ -1658,14 +1503,15 @@
           "fields": "",
           "values": false
         },
-        "showUnfilled": true
+        "showUnfilled": true,
+        "valueMode": "color"
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "100 - (avg(rate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"idle\"}[$interval])) * 100)",
@@ -1677,7 +1523,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"iowait\"}[$interval])) * 100",
@@ -1690,7 +1536,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "(1 - (node_memory_MemAvailable_bytes{instance=~\"$instance\"} / (node_memory_MemTotal_bytes{instance=~\"$instance\"})))* 100",
@@ -1702,7 +1548,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"})*100 /(node_filesystem_avail_bytes {instance=~\"$instance\",fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}+(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs\",mountpoint=\"$maxmount\"}))",
@@ -1715,7 +1561,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "(1 - ((node_memory_SwapFree_bytes{instance=~\"$instance\"} + 1)/ (node_memory_SwapTotal_bytes{instance=~\"$instance\"} + 1))) * 100",
@@ -1729,6 +1575,10 @@
       "type": "bargauge"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "description": "本看板中的：磁盘总量、使用量、可用量、使用率保持和df命令的Size、Used、Avail、Use% 列的值一致，并且Use%的值会四舍五入保留一位小数，会更加准确。\n\n注：df中Use%算法为：(size - free) * 100 / (avail + (size - free))，结果是整除则为该值，非整除则为该值+1，结果的单位是%。\n参考df命令源码：",
       "fieldConfig": {
         "defaults": {
@@ -1737,7 +1587,10 @@
           },
           "custom": {
             "align": "center",
-            "displayMode": "auto"
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
           },
           "displayName": "",
           "mappings": [],
@@ -1780,8 +1633,10 @@
                 "value": 0
               },
               {
-                "id": "custom.displayMode",
-                "value": "color-text"
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
               },
               {
                 "id": "thresholds",
@@ -1824,8 +1679,11 @@
                 "value": 0
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
               },
               {
                 "id": "thresholds",
@@ -1885,7 +1743,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 46
+                "value": 78
               }
             ]
           },
@@ -1896,7 +1754,8 @@
             },
             "properties": [
               {
-                "id": "custom.width"
+                "id": "custom.width",
+                "value": 323
               }
             ]
           }
@@ -1906,7 +1765,7 @@
         "h": 6,
         "w": 10,
         "x": 3,
-        "y": 19
+        "y": 13
       },
       "id": 216,
       "links": [
@@ -1917,7 +1776,9 @@
         }
       ],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1928,19 +1789,20 @@
         "sortBy": [
           {
             "desc": true,
-            "displayName": "使用率"
+            "displayName": "剩余空间"
           }
         ]
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}-0",
+          "expr": "node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\".*\",mountpoint !~\".*(pod|docker).*\"}-0",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1952,10 +1814,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "node_filesystem_avail_bytes {instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}-0",
+          "expr": "node_filesystem_avail_bytes {instance=~\"$instance\",fstype=~\".*\",mountpoint !~\".*(pod|docker).*\"}-0",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1967,10 +1830,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}) *100/(node_filesystem_avail_bytes {instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}+(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}))",
+          "expr": "(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\".*\",mountpoint !~\".*(pod|docker).*\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\".*\",mountpoint !~\".*(pod|docker).*\"}) *100/(node_filesystem_avail_bytes {instance=~\"$instance\",fstype=~\".*\",mountpoint !~\".*(pod|docker).*\"}+(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\".*\",mountpoint !~\".*(pod|docker).*\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\".*\",mountpoint !~\".*(pod|docker).*\"}))",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -2022,6 +1886,10 @@
       "type": "table"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2194,7 +2062,7 @@
         "h": 6,
         "w": 3,
         "x": 13,
-        "y": 19
+        "y": 13
       },
       "id": 218,
       "interval": "15s",
@@ -2214,7 +2082,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "targets": [
         {
           "alias": "",
@@ -2229,7 +2097,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "avg(time() - node_boot_time_seconds{instance=~\"$instance\"})",
@@ -2260,7 +2128,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "count(node_cpu_seconds_total{instance=~\"$instance\", mode='system'})",
@@ -2290,7 +2158,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "sum(node_memory_MemTotal_bytes{instance=~\"$instance\"})",
@@ -2321,7 +2189,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"iowait\"}[$interval])) * 100",
@@ -2352,7 +2220,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "node_filefd_maximum{instance=~\"$instance\"}",
@@ -2383,7 +2251,7 @@
           ],
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": false,
           "expr": "process_max_fds{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",instance=~\"$instance\"}",
@@ -2420,7 +2288,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_TEST-PROMETHEUS}"
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
       },
       "description": "",
       "fieldConfig": {
@@ -2435,7 +2303,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 19
+        "y": 13
       },
       "hiddenSeries": false,
       "hideTimeOverride": false,
@@ -2459,7 +2327,7 @@
         "alertThreshold": false
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 1,
       "points": false,
       "renderer": "flot",
@@ -2479,7 +2347,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "node_filefd_allocated{instance=~\"$instance\"}",
@@ -2493,7 +2361,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "rate(node_context_switches_total{instance=~\"$instance\"}[$interval])",
@@ -2505,7 +2373,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "(node_filefd_allocated{instance=~\"$instance\"}/node_filefd_maximum{instance=~\"$instance\"}) *100",
@@ -2520,7 +2388,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "(process_open_fds{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",instance=~\"$instance\"}/process_max_fds{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",instance=~\"$instance\"}) *100",
@@ -2589,7 +2457,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_TEST-PROMETHEUS}"
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
       },
       "decimals": 2,
       "description": "",
@@ -2605,7 +2473,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 25
+        "y": 19
       },
       "hiddenSeries": false,
       "id": 222,
@@ -2633,7 +2501,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2651,6 +2519,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"system\"}[$interval])) by (instance) *100",
           "format": "time_series",
           "hide": false,
@@ -2662,6 +2534,10 @@
           "step": 20
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"user\"}[$interval])) by (instance) *100",
           "format": "time_series",
           "hide": false,
@@ -2672,6 +2548,10 @@
           "step": 240
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "avg(rate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"iowait\"}[$interval])) by (instance) *100",
           "format": "time_series",
           "hide": false,
@@ -2683,6 +2563,10 @@
           "step": 240
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "(1 - avg(rate(node_cpu_seconds_total{instance=~\"$instance\",mode=\"idle\"}[$interval])) by (instance))*100",
           "format": "time_series",
           "hide": false,
@@ -2742,6 +2626,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "decimals": 2,
       "fieldConfig": {
         "defaults": {
@@ -2755,7 +2643,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 25
+        "y": 19
       },
       "height": "300",
       "hiddenSeries": false,
@@ -2783,7 +2671,7 @@
         "alertThreshold": false
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2811,7 +2699,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "node_memory_MemTotal_bytes{instance=~\"$instance\"}",
@@ -2827,7 +2715,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "node_memory_MemTotal_bytes{instance=~\"$instance\"} - node_memory_MemAvailable_bytes{instance=~\"$instance\"}",
           "format": "time_series",
@@ -2841,7 +2729,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "node_memory_MemAvailable_bytes{instance=~\"$instance\"}",
           "format": "time_series",
@@ -2855,7 +2743,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "(1 - (node_memory_MemAvailable_bytes{instance=~\"$instance\"} / (node_memory_MemTotal_bytes{instance=~\"$instance\"})))* 100",
@@ -2911,6 +2799,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "decimals": 2,
       "fieldConfig": {
         "defaults": {
@@ -2924,7 +2816,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 25
+        "y": 19
       },
       "height": "300",
       "hiddenSeries": false,
@@ -2952,7 +2844,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2970,7 +2862,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "rate(node_network_receive_bytes_total{instance=~\"$instance\",device=~\"$device\"}[$interval])*8",
@@ -2984,7 +2876,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "rate(node_network_transmit_bytes_total{instance=~\"$instance\",device=~\"$device\"}[$interval])*8",
           "format": "time_series",
@@ -3039,7 +2931,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_TEST-PROMETHEUS}"
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
       },
       "editable": true,
       "error": false,
@@ -3056,7 +2948,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 33
+        "y": 27
       },
       "height": "300",
       "hiddenSeries": false,
@@ -3085,7 +2977,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3106,7 +2998,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "node_load1{instance=~\"$instance\"}",
@@ -3123,7 +3015,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "node_load5{instance=~\"$instance\"}",
           "format": "time_series",
@@ -3137,7 +3029,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "node_load15{instance=~\"$instance\"}",
           "format": "time_series",
@@ -3151,7 +3043,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": " sum(count(node_cpu_seconds_total{instance=~\"$instance\", mode='system'}) by (cpu,instance)) by(instance)",
@@ -3206,6 +3098,10 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "editable": true,
       "error": false,
       "fill": 0,
@@ -3215,7 +3111,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 33
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 230,
@@ -3241,7 +3137,7 @@
         "alertThreshold": false
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3254,7 +3150,7 @@
           "calculatedInterval": "2m",
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "datasourceErrors": {},
           "errors": {},
@@ -3274,7 +3170,7 @@
           "calculatedInterval": "2m",
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "datasourceErrors": {},
           "errors": {},
@@ -3336,7 +3232,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_TEST-PROMETHEUS}"
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
       },
       "decimals": 1,
       "description": "",
@@ -3352,7 +3248,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 33
+        "y": 27
       },
       "hiddenSeries": false,
       "id": 232,
@@ -3379,7 +3275,7 @@
         "alertThreshold": false
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3400,7 +3296,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}) *100/(node_filesystem_avail_bytes {instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}+(node_filesystem_size_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}-node_filesystem_free_bytes{instance=~\"$instance\",fstype=~\"ext.*|xfs|nfs\",mountpoint !~\".*(pod|docker).*\"}))",
@@ -3414,7 +3310,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "1 - node_filesystem_files_free{instance=~\"$instance\",fstype=~\"ext.?|xfs\",mountpoint !~\".*(pod|docker).*\"} / node_filesystem_files{instance=~\"$instance\",fstype=~\"ext.?|xfs\",mountpoint !~\".*(pod|docker).*\"}",
@@ -3468,7 +3364,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_TEST-PROMETHEUS}"
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
       },
       "decimals": 2,
       "description": "Read bytes 每个磁盘分区每秒读取的比特数\nWritten bytes 每个磁盘分区每秒写入的比特数",
@@ -3484,7 +3380,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 41
+        "y": 35
       },
       "height": "300",
       "hiddenSeries": false,
@@ -3511,7 +3407,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3527,6 +3423,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "rate(node_disk_read_bytes_total{instance=~\"$instance\"}[$interval])",
           "format": "time_series",
           "interval": "",
@@ -3536,6 +3436,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "rate(node_disk_written_bytes_total{instance=~\"$instance\"}[$interval])",
           "format": "time_series",
           "hide": false,
@@ -3588,7 +3492,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_TEST-PROMETHEUS}"
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
       },
       "decimals": 0,
       "description": "Reads completed: 每个磁盘分区每秒读完成次数\n\nWrites completed: 每个磁盘分区每秒写完成次数\n\nIO now 每个磁盘分区每秒正在处理的输入/输出请求数",
@@ -3604,7 +3508,7 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 41
+        "y": 35
       },
       "height": "300",
       "hiddenSeries": false,
@@ -3631,7 +3535,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3647,6 +3551,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "rate(node_disk_reads_completed_total{instance=~\"$instance\"}[$interval])",
           "format": "time_series",
           "hide": false,
@@ -3657,6 +3565,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "rate(node_disk_writes_completed_total{instance=~\"$instance\"}[$interval])",
           "format": "time_series",
           "hide": false,
@@ -3667,6 +3579,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "node_disk_io_now{instance=~\"$instance\"}",
           "format": "time_series",
           "hide": true,
@@ -3718,7 +3634,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_TEST-PROMETHEUS}"
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
       },
       "decimals": 2,
       "description": "Read time seconds 每个磁盘分区读操作花费的秒数\n\nWrite time seconds 每个磁盘分区写操作花费的秒数\n\nIO time seconds 每个磁盘分区输入/输出操作花费的秒数\n\nIO time weighted seconds每个磁盘分区输入/输出操作花费的加权秒数",
@@ -3734,7 +3650,7 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 41
+        "y": 35
       },
       "height": "300",
       "hiddenSeries": false,
@@ -3761,7 +3677,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3777,6 +3693,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "rate(node_disk_read_time_seconds_total{instance=~\"$instance\"}[$interval]) / rate(node_disk_reads_completed_total{instance=~\"$instance\"}[$interval])",
           "format": "time_series",
           "hide": false,
@@ -3787,6 +3707,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "rate(node_disk_write_time_seconds_total{instance=~\"$instance\"}[$interval]) / rate(node_disk_writes_completed_total{instance=~\"$instance\"}[$interval])",
           "format": "time_series",
           "hide": false,
@@ -3797,6 +3721,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "rate(node_disk_io_time_seconds_total{instance=~\"$instance\"}[$interval])",
           "format": "time_series",
           "hide": true,
@@ -3807,6 +3735,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+          },
           "expr": "rate(node_disk_io_time_weighted_seconds_total{instance=~\"$instance\"}[$interval])",
           "format": "time_series",
           "hide": true,
@@ -3867,6 +3799,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "description": "每一秒钟的自然时间内，花费在I/O上的耗时。（wall-clock time）\n\nnode_disk_io_time_seconds_total：\n磁盘花费在输入/输出操作上的秒数。该值为累加值。（Milliseconds Spent Doing I/Os）\n\nrate(node_disk_io_time_seconds_total[1m])：\n计算每秒的速率：(last值-last前一个值)/时间戳差值，即：1秒钟内磁盘花费在I/O操作的时间占比。",
       "fieldConfig": {
         "defaults": {
@@ -3880,7 +3816,7 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 41
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 240,
@@ -3908,7 +3844,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3920,7 +3856,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "rate(node_disk_io_time_seconds_total{instance=~\"$instance\"}[$interval])",
@@ -3973,6 +3909,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "description": "Sockets_used - 已使用的所有协议套接字总量\n\nCurrEstab - 当前状态为 ESTABLISHED 或 CLOSE-WAIT 的 TCP 连接数\n\nTCP_alloc - 已分配（已建立、已申请到sk_buff）的TCP套接字数量\n\nTCP_tw - 等待关闭的TCP连接数\n\nUDP_inuse - 正在使用的 UDP 套接字数量\n\nRetransSegs - TCP 重传报文数\n\nOutSegs - TCP 发送的报文数\n\nInSegs - TCP 接收的报文数",
       "fieldConfig": {
         "defaults": {
@@ -3986,7 +3926,7 @@
         "h": 8,
         "w": 16,
         "x": 0,
-        "y": 49
+        "y": 43
       },
       "height": "300",
       "hiddenSeries": false,
@@ -4013,7 +3953,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -4034,7 +3974,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "node_netstat_Tcp_CurrEstab{instance=~\"$instance\"}",
           "format": "time_series",
@@ -4049,7 +3989,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "node_sockstat_TCP_tw{instance=~\"$instance\"}",
           "format": "time_series",
@@ -4061,7 +4001,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "node_sockstat_sockets_used{instance=~\"$instance\"}",
@@ -4074,7 +4014,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "node_sockstat_UDP_inuse{instance=~\"$instance\"}",
           "interval": "",
@@ -4084,7 +4024,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "node_sockstat_TCP_alloc{instance=~\"$instance\"}",
           "interval": "",
@@ -4094,7 +4034,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "rate(node_netstat_Tcp_PassiveOpens{instance=~\"$instance\"}[$interval])",
           "hide": true,
@@ -4105,7 +4045,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "rate(node_netstat_Tcp_ActiveOpens{instance=~\"$instance\"}[$interval])",
           "hide": true,
@@ -4116,7 +4056,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "rate(node_netstat_Tcp_InSegs{instance=~\"$instance\"}[$interval])",
           "interval": "",
@@ -4126,7 +4066,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "rate(node_netstat_Tcp_OutSegs{instance=~\"$instance\"}[$interval])",
           "interval": "",
@@ -4136,7 +4076,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "rate(node_netstat_Tcp_RetransSegs{instance=~\"$instance\"}[$interval])",
           "hide": false,
@@ -4147,7 +4087,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "expr": "rate(node_netstat_TcpExt_ListenDrops{instance=~\"$instance\"}[$interval])",
           "hide": true,
@@ -4202,6 +4142,10 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+      },
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -4217,7 +4161,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 49
+        "y": 43
       },
       "hiddenSeries": false,
       "id": 244,
@@ -4243,7 +4187,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.6",
+      "pluginVersion": "10.1.2",
       "pointradius": 1,
       "points": false,
       "renderer": "flot",
@@ -4261,7 +4205,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "increase(node_network_receive_bytes_total{instance=~\"$instance\",device=~\"$device\"}[1m])",
@@ -4276,7 +4220,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_TEST-PROMETHEUS}"
+            "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
           },
           "exemplar": true,
           "expr": "increase(node_network_transmit_bytes_total{instance=~\"$instance\",device=~\"$device\"}[1m])",
@@ -4323,8 +4267,8 @@
       }
     }
   ],
-  "refresh": false,
-  "schemaVersion": 34,
+  "refresh": "30s",
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [
     "Prometheus",
@@ -4335,10 +4279,15 @@
     "list": [
       {
         "allValue": "",
-        "current": {},
+        "current": {
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_TEST-PROMETHEUS}"
+          "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
         },
         "definition": "label_values(origin_prometheus)",
         "hide": 0,
@@ -4361,10 +4310,14 @@
         "useTags": false
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "node",
+          "value": "node"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_TEST-PROMETHEUS}"
+          "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
         },
         "definition": "label_values(node_uname_info{origin_prometheus=~\"$origin_prometheus\"}, job)",
         "hide": 0,
@@ -4387,10 +4340,14 @@
         "useTags": false
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_TEST-PROMETHEUS}"
+          "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
         },
         "definition": "label_values(node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}, nodename)",
         "hide": 0,
@@ -4414,10 +4371,14 @@
       },
       {
         "allFormat": "glob",
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "192.168.1.100:9100",
+          "value": "192.168.1.100:9100"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_TEST-PROMETHEUS}"
+          "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
         },
         "definition": "label_values(node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",nodename=~\"$hostname\"},instance)",
         "hide": 0,
@@ -4442,10 +4403,14 @@
       },
       {
         "allFormat": "glob",
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_TEST-PROMETHEUS}"
+          "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
         },
         "definition": "label_values(node_network_info{origin_prometheus=~\"$origin_prometheus\",instance=~\"$instance\",device!~'tap.*|veth.*|br.*|docker.*|virbr.*|lo.*|cni.*'},device)",
         "hide": 0,
@@ -4524,10 +4489,14 @@
         "type": "interval"
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "/mnt/storage",
+          "value": "/mnt/storage"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_TEST-PROMETHEUS}"
+          "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
         },
         "definition": "query_result(topk(1,sort_desc (max(node_filesystem_size_bytes{origin_prometheus=~\"$origin_prometheus\",instance=~\"$instance\",fstype=~\"ext.?|xfs\",mountpoint!~\".*pods.*\"}) by (mountpoint))))",
         "hide": 2,
@@ -4550,10 +4519,14 @@
         "useTags": false
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "onecloud",
+          "value": "onecloud"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_TEST-PROMETHEUS}"
+          "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
         },
         "definition": "label_values(node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\",instance=~\"$instance\"}, nodename)",
         "hide": 2,
@@ -4576,10 +4549,14 @@
         "useTags": false
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "1",
+          "value": "1"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_TEST-PROMETHEUS}"
+          "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
         },
         "definition": "query_result(count(node_uname_info{origin_prometheus=~\"$origin_prometheus\",job=~\"$job\"}))",
         "hide": 2,
@@ -4600,6 +4577,24 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "df01c846-0ca5-487e-9446-2e05bec2ffa7"
+        },
+        "filters": [
+          {
+            "condition": "",
+            "key": "mountpoint",
+            "operator": "!=",
+            "value": "/var/log.hdd"
+          }
+        ],
+        "hide": 0,
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
       }
     ]
   },
@@ -4631,7 +4626,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Node Exporter Dashboard 220417 通用Job分组版",
+  "title": "Node Exporter Dashboard 220417",
   "uid": "9CWBz0bik",
   "version": 11,
   "weekStart": ""
