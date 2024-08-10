@@ -1,16 +1,50 @@
+global:
+  resolve_timeout: 1m # 每1分钟检测一次是否恢复
+  smtp_smarthost: "smtp.163.com:465"
+  smtp_from: "" #邮箱地址
+  smtp_auth_username: "" #邮箱地址
+  smtp_auth_password: "" #smtp授权码
+  smtp_require_tls: false
+
 route:
-  group_by: ['alertname']
-  group_wait: 30s
-  group_interval: 5m
+  receiver: "webhook"
+  group_by: ["type", "alertname"] #告警中的标签，相同type+alertname的会合并为一个通知告警
+  group_wait: 10s
+  group_interval: 1m
   repeat_interval: 1h
-  receiver: 'web.hook'
+
+  routes: #子路由，不满足子路由的都走默认路由
+    - receiver: "webhook"
+      group_by: ["type", "alertname"]
+      group_wait: 10s
+      group_interval: 1m
+      repeat_interval: 1h
+      continue: true
+  # - receiver: 'mail'
+  #   group_by: ['type','alertname']
+  #   group_wait: 10s
+  #   group_interval: 1m
+  #   repeat_interval: 1h
+
 receivers:
-  - name: 'web.hook'
+  - name: "mail"
+    email_configs:
+      - to: "" #告警发送到的邮箱
+        send_resolved: true
+
+  - name: "webhook"
     webhook_configs:
-      - url: 'http://127.0.0.1:5001/'
+      - url: http://192.168.1.100:8100/webhook
+        send_resolved: true
+
 inhibit_rules:
   - source_match:
-      severity: 'critical'
+      severity: "critical"
     target_match:
-      severity: 'warning'
-    equal: ['alertname', 'dev', 'instance']
+      severity: "warning"
+    equal: ["alertname", "dev", "instance"]
+  - source_match:
+      severity: "critical"
+    target_match_re:
+      severity: ".*"
+    equal: ["instance"]
