@@ -3,7 +3,7 @@
 
 set -e
 
-ip=$(ip a |grep ens32 | sed "2s/^.*inet//;2s/brd.*$//p" -n)
+IP=$(ip a |grep eth0 |sed -n 's/^.*inet \([^\/]*\).*/\1/p')
 
 # 创建textfile自定义指标目录
 mkdir -p /var/lib/node_exporter/textfile_collector
@@ -30,4 +30,4 @@ systemctl daemon-reload
 systemctl enable node_exporter
 systemctl start node_exporter
 
-echo "now node_exporter is running on ${ip}:9100"
+echo "now node_exporter is running on ${IP}:9100"
